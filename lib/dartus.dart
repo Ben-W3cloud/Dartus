@@ -13,7 +13,7 @@
 /// ```dart
 /// import 'package:dartus/dartus.dart';
 ///
-/// final client = WalrusDirect(
+/// final client = WalrusClient(
 ///   publisherBaseUrl: Uri.parse('https://publisher.walrus-testnet.walrus.space'),
 ///   aggregatorBaseUrl: Uri.parse('https://aggregator.walrus-testnet.walrus.space'),
 /// );
