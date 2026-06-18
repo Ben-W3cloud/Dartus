@@ -27,10 +27,10 @@
 /// await client.close();
 /// ```
 ///
-/// ## Quick Start — Direct Mode
+/// ## Quick Start — Direct Mode (native only)
 ///
 /// ```dart
-/// import 'package:dartus/dartus.dart';
+/// import 'package:dartus/direct.dart';
 ///
 /// final client = WalrusDirectClient.fromNetwork(
 ///   network: WalrusNetwork.testnet,
@@ -84,8 +84,6 @@ export 'src/models/walrus_api_error.dart';
 // Phase 2 — Wallet Integration & Upload Relay
 export 'src/chain/committee_resolver.dart';
 export 'src/chain/system_state_reader.dart';
-export 'src/client/walrus_direct_client.dart';
-export 'src/client/write_blob_flow.dart';
 export 'src/constants/walrus_constants.dart';
 export 'src/contracts/transaction_builder.dart';
 export 'src/encoding/blob_encoder.dart';
@@ -93,8 +91,10 @@ export 'src/models/protocol_types.dart';
 export 'src/upload_relay/upload_relay_client.dart';
 
 // Phase 3 — Full Direct Mode (Client-Side Encoding)
-export 'src/encoding/walrus_blob_encoder.dart';
-export 'src/encoding/walrus_ffi_bindings.dart';
+// NOTE: the Rust FFI surface (WalrusBlobEncoder, WalrusFfiBindings,
+// WalrusDirectClient, WriteBlobFlow, WriteFilesFlow) is exported from
+// `package:dartus/direct.dart` instead — it imports `dart:ffi`, which is not
+// available on web. Keep this barrel free of `dart:ffi` so HTTP mode builds for web.
 export 'src/errors/walrus_errors.dart';
 export 'src/models/storage_node_types.dart';
 export 'src/storage_node/storage_node_client.dart';
@@ -103,7 +103,6 @@ export 'src/utils/randomness.dart';
 export 'src/utils/retry.dart';
 
 // Phase 3+ — File Abstractions, Quilts, Blob ID Utilities, Readers
-export 'src/client/write_files_flow.dart';
 export 'src/encoding/bcs_parser.dart';
 export 'src/files/blob.dart';
 export 'src/files/file.dart';
