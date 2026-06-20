@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Split the public API: `package:dartus/dartus.dart` is now web-safe (HTTP mode);
 - direct mode + Rust FFI moved to `package:dartus/direct.dart`. Direct-mode users should import `package:dartus/direct.dart`.
 
+- Migrated the HTTP transport (`RequestExecutor`, `WalrusClient`) from dart:io `HttpClient` to `package:http`, so HTTP networking works on web. 
+- The `httpClient` parameter now takes an `http.Client`. `useSecureConnection` is now a no-op (TLS is handled by the platform).
+
 ## [0.2.0] - 2026-03-25
 
 ### Added
